@@ -1,0 +1,42 @@
+Deploy via Cloudflare Dashboard:
+
+1. Go to https://dash.cloudflare.com/
+
+2. Sign up/login
+
+3. Click "Workers & Pages" > "KV" > "Create namespace"
+   Name: TASKS
+   Copy the namespace ID
+
+4. Click "Workers & Pages" > "Create application" > "Create Worker"
+   Name: todolist-bot
+   Click "Deploy"
+
+5. Click "Edit Code"
+   Delete everything and paste worker.js code
+
+6. Click "Settings" > "Variables"
+   Add Environment Variable:
+   - Name: BOT_TOKEN
+   - Value:{enter you BOT_API}
+
+7. Click "Settings" > "Bindings" > "Add binding"
+   - Type: KV Namespace
+   - Variable name: TASKS
+   - KV namespace: Select TASKS
+   Save
+
+8. Click "Settings" > "Triggers" > "Cron Triggers" > "Add Cron Trigger"
+   Add these 3 triggers:
+   - 0 0 * * * (12 AM)
+   - 0 6 * * * (6 AM)
+   - 0 18 * * * (6 PM)
+
+9. Click "Save and Deploy"
+
+10. Copy worker URL (like https://todolist-bot.YOUR-SUBDOMAIN.workers.dev)
+
+11. Open browser and visit:
+https://api.telegram.org/bot{enter you BOT_API}/setWebhook?url=YOUR_WORKER_URL
+
+Done. Open Telegram and search for your bot.
