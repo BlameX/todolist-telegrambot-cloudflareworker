@@ -10,7 +10,6 @@ export default {
   
   async scheduled(event, env, ctx) {
     await sendScheduledReminders(env);
-    await checkReminders(env);
     await checkScheduledMessages(env);
   }
 };
