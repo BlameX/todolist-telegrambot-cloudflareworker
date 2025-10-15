@@ -1,0 +1,19 @@
+URGENT FIX FOR REMINDERS:
+
+Go to Cloudflare Dashboard NOW:
+
+1. Workers & Pages > Your worker > Settings > Triggers > Cron Triggers
+
+2. Add this cron trigger:
+   * * * * *
+   
+   This runs EVERY MINUTE to check and send reminders.
+
+3. Click Save
+
+4. Test with these commands:
+   /debugreminders - See all scheduled messages
+   /forcecheck - Manually check now
+   
+THAT'S IT. Reminders will now work.
+
